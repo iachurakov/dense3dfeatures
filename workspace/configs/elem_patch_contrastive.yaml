@@ -1,0 +1,34 @@
+---
+logger:
+  project_name: 'seals5454/3sdu'
+  exp_name: dgcnn_contrastive_patch_elem
+  tags: ['point_cloud', 'contrastive', 'inside_shape', 'patches', 'points']
+  api_token:
+    "eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmU\
+    uYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS\
+    5haSIsImFwaV9rZXkiOiI2NTIwODVkNC1hOTg5LTQ4NTAtY\
+    WRhNS0yMGY4MmQ1YzBmZWIifQ=="
+
+data:
+  name: shapenet_part
+  path: '../datasets/hdfs/shapenet_10patches_10rots.h5'
+  modalities: ['point_cloud']
+  batch_size: 7
+  aug: [True, [xyz, -45, 45], True, False]
+
+model:
+  flatten_embeddings: False
+  mlp: False
+  reduction: mean,
+  n_output: 512
+
+train:
+  framework: elem_patch_contrastive
+  total_epochs: 200
+  lr: 1.e-3
+  weight_decay: 1.e-5
+  tau: 0.07
+  sample_frac: 0.7
+  max_samples: 500
+  save_every: 100
+  weights_root: './weights'
