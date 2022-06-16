@@ -1,1 +1,1 @@
-# Dense Self Supervised Representation Learning For 3D Shapes
+# Crossmodal Unsupervised Learning of Local Features from 3D Shape Collections
